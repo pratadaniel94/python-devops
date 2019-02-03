@@ -12,8 +12,7 @@ jenkins = Blueprint('jenkins', __name__, url_prefix='/jenkins')
 
 @jenkins.route('')
 def index():
-    jobs = [con.get_job_info(job['name']) for job in con.get_all_jobs()]
-    pprint(con.get_build_info(jobs[0]['name'], jobs[0]['lastBuild']['number']['actions']))
+    jobs = [[con.get_build_info(job['name'],con.get_job_info(job['name'])['lastBuild']['number'])['timestamp'], job['name'],job['color']]for job in con.get_all_jobs()]
     return render_template('jenkins.html', jobs=jobs)
 
 
