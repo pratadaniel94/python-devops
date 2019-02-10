@@ -28,9 +28,11 @@
                     <li><a href="/docker">Docker</a></li>
                     <li><a href="/gitlab">Gitlab</a></li>
                 </ul>
+                {% if session.auth %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Deslogar</a></li>
+                    <li><a href="/logout">Deslogar</a></li>
                 </ul>
+                {% endif %}
             </div>
         </div>
     </nav>
